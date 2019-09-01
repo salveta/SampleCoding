@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">KotlinMVProject</string>
+    <string name="app_name">Voucher App</string>
+    <string name="voucher_unvailable">The vouchers ar not available right now</string>
+    <string name="empty_shopping_cart">You shopping cart is empty</string>
+    <string name="paypal">Paypal</string>
+    <string name="tarjet">Credit card</string>
+    <string name="total">Total:</string>
+    <string name="units">Units: </string>
+    <string name="euro">€ </string>
+    <string name="offer_voucher">(2x1) special offer</string>
+    <string name="offer_tshirt">(+3 Tshirt x 19€) special offer</string>
+    <string name="shopping_success">Your products have been purchased. Soon you will receive them!</string>
 </resources>

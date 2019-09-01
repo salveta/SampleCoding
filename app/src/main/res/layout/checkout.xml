@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lyCheckout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/checkout_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:layout_above="@+id/lyTotalPrice"
+        android:layout_marginBottom="@dimen/margin_standard"/>
+    <LinearLayout
+        android:id="@+id/lyTotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingRight="@dimen/padding_10"
+        android:layout_above="@+id/rlButtonPayment"
+        android:layout_marginBottom="@dimen/margin_standard">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_22"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:text="@string/total"/>
+        <TextView
+            android:id="@+id/txTotalPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start"
+            android:textSize="@dimen/text_size_30"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rlButtonPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/btnPaypal"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="@drawable/round_corner_button"
+                android:text="@string/paypal"
+                android:textColor="@color/blue"
+                android:minHeight="@dimen/height_btn"
+                android:padding="@dimen/padding_10"
+                android:focusable="true"/>
+            <Button
+                android:id="@+id/btnCreditCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:clickable="true"
+                android:layout_toEndOf="@+id/btnPaypal"
+                android:background="@drawable/round_corner_button"
+                android:text="@string/tarjet"
+                android:textColor="@color/blue"
+                android:minHeight="@dimen/height_btn"
+                android:padding="@dimen/padding_10"
+                android:focusable="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
