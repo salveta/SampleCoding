@@ -1,11 +1,15 @@
 package salva.perez.kotlinmvproject.app.ui.voucher
 
 import android.os.Bundle
+import androidx.annotation.Nullable
+import androidx.annotation.VisibleForTesting
 import android.view.View
+import androidx.test.espresso.IdlingResource
 import kotlinx.android.synthetic.main.voucher.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import salva.perez.kotlinmvproject.R
+import salva.perez.kotlinmvproject.app.idlingResource.SimpleIdlingResource
 import salva.perez.kotlinmvproject.app.navigator.Navigator
 import salva.perez.kotlinmvproject.app.ui.toolbars.ToolbarVoucherActivity
 import salva.perez.kotlinmvproject.app.ui.checkout.CheckoutActivity
@@ -19,10 +23,16 @@ class VoucherActivity : ToolbarVoucherActivity(), VoucherContract.View{
     override val layoutId: Int = R.layout.voucher
     private val presenter: VoucherContract.Presenter by inject { parametersOf(this)}
 
+    @Nullable
+    var mIdlingResource: SimpleIdlingResource? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         presenter.create()
+        getIdlingResource()
+        presenter.getVouchers(null)
     }
 
     override fun onRestart() {
@@ -79,5 +89,13 @@ class VoucherActivity : ToolbarVoucherActivity(), VoucherContract.View{
 
     override fun hideCart(vouchers: Boolean) {
         hideShoppingCart(vouchers)
+    }
+
+    @VisibleForTesting
+    fun getIdlingResource(): IdlingResource {
+        if (mIdlingResource == null) {
+            mIdlingResource = SimpleIdlingResource()
+        }
+        return mIdlingResource!!
     }
 }

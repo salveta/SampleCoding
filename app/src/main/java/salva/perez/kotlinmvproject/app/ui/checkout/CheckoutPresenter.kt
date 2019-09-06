@@ -29,7 +29,7 @@ class CheckoutPresenter (private var view: CheckoutContract.View?, private var m
         createCheckoutObject(itemsVoucher, itemsTshirt, itemsMug)
     }
 
-    private fun createCheckoutObject(itemsVoucher: Int?, itemsTshirt: Int?, itemsMug: Int?){
+    fun createCheckoutObject(itemsVoucher: Int?, itemsTshirt: Int?, itemsMug: Int?){
         var removeEqualElements = voucherRepository.getProductsInShoppinCart()
         removeEqualElements!!.distinct()
 
@@ -40,21 +40,21 @@ class CheckoutPresenter (private var view: CheckoutContract.View?, private var m
         view?.showCheckoutProducts(checkoutRepository.getProductsInShoppinCart()!!.distinct())
     }
 
-    private fun addVoucherInCheckout(removeEqualElements : List<Product>, itemsVoucher: Int?){
+    fun addVoucherInCheckout(removeEqualElements : List<Product>, itemsVoucher: Int?){
         for(product in removeEqualElements){
             if(product.code.contentEquals(VOUCHER_DISCOUNT_CODE)) {
                 checkoutRepository.addProductToShoppingCart(Checkout(product.name, product.code, CalculateFinalPrice().getDiscountVoucher(), itemsVoucher!!))
             }
         }
     }
-    private fun addTshirtInCheckout(removeEqualElements : List<Product>, itemsTshirt: Int?){
+    fun addTshirtInCheckout(removeEqualElements : List<Product>, itemsTshirt: Int?){
         for(product in removeEqualElements){
             if(product.code.contentEquals(TSHIRT_DISCOUNT_CODE)) {
                 checkoutRepository.addProductToShoppingCart(Checkout(product.name, product.code, CalculateFinalPrice().getDiscountTshirt(), itemsTshirt!!))
             }
         }
     }
-    private fun addMugInCheckout(removeEqualElements : List<Product>, itemsMug: Int?){
+    fun addMugInCheckout(removeEqualElements : List<Product>, itemsMug: Int?){
         for(product in removeEqualElements){
             if(product.code.contentEquals(MUG)) {
                 checkoutRepository.addProductToShoppingCart(Checkout(product.name, product.code, CalculateFinalPrice().getTotalMug(), itemsMug!!))

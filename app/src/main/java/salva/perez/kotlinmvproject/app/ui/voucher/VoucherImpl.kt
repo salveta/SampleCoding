@@ -3,7 +3,6 @@ package salva.perez.kotlinmvproject.app.ui.voucher
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import salva.perez.kotlinmvproject.app.ui.voucher.VoucherContract
 import salva.perez.kotlinmvproject.domain.interactor.AbstractInteractor
 import salva.perez.kotlinmvproject.domain.model.Product
 import salva.perez.kotlinmvproject.data.network.rest.RetrofitAdapter

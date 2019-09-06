@@ -1,6 +1,8 @@
 package salva.perez.kotlinmvproject.app.ui.voucher
 
+import androidx.annotation.Nullable
 import org.koin.core.KoinComponent
+import salva.perez.kotlinmvproject.app.idlingResource.SimpleIdlingResource
 import salva.perez.kotlinmvproject.data.repository.VoucherRepository
 import salva.perez.kotlinmvproject.domain.model.Product
 
@@ -10,12 +12,15 @@ class VoucherPresenter(private var view: VoucherContract.View?, private var mCod
     override fun create() {
         view?.initView()
         view?.showProgress()
+    }
+
+    override fun getVouchers(@Nullable idlingResource: SimpleIdlingResource?) {
         mCodeRechargeInteract.getVouchers(this)
     }
 
     override fun destroy() {
         view = null
-        mCodeRechargeInteract.removeCallbacks()
+        mCodeRechargeInteract.destroy()
     }
 
     override fun onItemClick(product: Product) {

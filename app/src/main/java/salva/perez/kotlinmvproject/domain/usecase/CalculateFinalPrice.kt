@@ -37,7 +37,7 @@ class CalculateFinalPrice {
         return calculateShirtDiscount(tshirt, priceShirt)
     }
 
-    private fun calculateShirtDiscount(tshirt: Int, priceShirt: Double): Double{
+    fun calculateShirtDiscount(tshirt: Int, priceShirt: Double): Double{
         return when (tshirt) {
             1, 2 -> tshirt.times(priceShirt)
             else -> tshirt.times(DISCOUNT_TSHIRT)
@@ -59,7 +59,7 @@ class CalculateFinalPrice {
         }
     }
 
-    private fun calculateVoucherDiscount(voucher : Int, priceVoucher: Double): Double{
+    fun calculateVoucherDiscount(voucher : Int, priceVoucher: Double): Double{
         if(voucher.rem(2) == 0){
             return voucher * priceVoucher / 2
         }

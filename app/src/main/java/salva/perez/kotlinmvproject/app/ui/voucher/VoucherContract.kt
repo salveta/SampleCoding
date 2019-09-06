@@ -1,6 +1,8 @@
 package salva.perez.kotlinmvproject.app.ui.voucher
 
 
+import androidx.annotation.Nullable
+import salva.perez.kotlinmvproject.app.idlingResource.SimpleIdlingResource
 import salva.perez.kotlinmvproject.domain.model.Product
 
 
@@ -21,6 +23,7 @@ interface VoucherContract {
     interface Presenter {
         fun create()
         fun destroy()
+        fun getVouchers(@Nullable idlingResource: SimpleIdlingResource?)
         fun checkIfShoppingCartHaveItems()
         fun addVoucherToShoppingCart(voucherProduct: Product)
         fun onItemClick(product: Product)
